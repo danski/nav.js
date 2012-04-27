@@ -32,20 +32,26 @@ Base your HTML template on this one.
     <script type="text/javascript" src="js/nav.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        Nav.init("#nav-pages", "#nav-overview");
+        Nav.init(function(overview) {
+          $("nav .current").first().after(overview);
+        });
       });
     </script>
   </head>
   <body>
     
     <div class="nav-wrapper">
-      <nav id="nav-pages">
-          <ul>
-            <li>This should be a list of links for navigating <em>between</em> documents.</li>
-          </ul>
-      </nav>
-      <nav id="nav-overview">
-        <!-- Nav.js will populate this with links for navigating *within* this document -->
+      <nav id="nav-overview" class="overview">
+        <h3>Category 1</h3>
+        <h4 class="current">
+            <a href="">Current document</a>
+        </h4>
+        <h4><a href="">Another document in Category 1</a></h4>
+
+        <h3>Category 2</h3>
+        <h4><a href="">A document in Category 2</a></h4>
+        <h4><a href="">Another document in Category 2</a></h4>
+        <h4><a href="">Yet another document in Category 2</a></h4>
       </nav>
     </div>
      
