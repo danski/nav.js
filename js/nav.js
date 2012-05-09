@@ -195,7 +195,7 @@ Nav.addScrollListener = function() {
     }
     else {
       var lastAboveFrameHeader;
-      $("h1:not(article h1:first-child), h2, h3, h4, h5, h6").each(function(i) {
+      $("h1:not(h1:first-child), h2, h3, h4, h5, h6", $("article")).each(function(i) {
         var $elem = $(this);
         var elemTop = $elem.offset().top;
         var elemBottom = elemTop + $elem.height();
