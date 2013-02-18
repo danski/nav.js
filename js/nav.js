@@ -60,9 +60,13 @@ Nav.buildOverview = function(injectorCallback) {
       // Important: First heading ignored as it is the page heading
     }
     else {
-      var $h = $(this);
+      var $h = $(this),
+          hId = $h.attr("id") || $.trim($h.html()).toLowerCase().replace(/\s|\t/g, "-");;
 
-      var newLi = $("<li class=\"hidden\"><a href=\"#"+$h.attr("id")+"\">"+$h.html()+"</a><ol></ol></li>");
+      // Prefilter by generating an ID against the heading if none is defined
+      $h.attr("id", hId);
+
+      var newLi = $("<li class=\"hidden\"><a href=\"#"+hId+"\">"+$h.html()+"</a><ol></ol></li>");
 
       if(hPrev && (this.tagName == hPrev.tagName)) {
         // console.log("keeping scope: "+this.tagName+" ('"+$h.html()+"')");
